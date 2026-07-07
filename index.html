@@ -3,609 +3,529 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ORBIT 模組操作手冊</title>
-<meta name="description" content="ORBIT 13 個核心模組操作與介面手冊">
+<title>ORBIT 操作與介面手冊</title>
+<meta name="description" content="ORBIT 13 個核心模組操作與介面手冊——教育訓練用書本體驗">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #ece9e0;
-    --bg-soft: #e1ddce;
-    --surface: #f7f5ee;
-    --surface-2: #ffffff;
-    --border: rgba(23,21,18,0.12);
-    --border-soft: rgba(23,21,18,0.07);
-    --ink: #17140f;
-    --ink-soft: rgba(23,20,15,0.64);
-    --ink-faint: rgba(23,20,15,0.42);
-    --gold: #a8813f;
-    --gold-ink: #7a5c26;
-    --gold-08: rgba(168,129,63,0.08);
-    --gold-16: rgba(168,129,63,0.16);
-    --live: #3f7a4c;
-    --live-bg: rgba(63,122,76,0.10);
-    --partial: #9c5f2c;
-    --partial-bg: rgba(156,95,44,0.10);
-    --planned: #4f6788;
-    --planned-bg: rgba(79,103,136,0.10);
-    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --bg: #d8d2c0;
+    --desk: #cec6ae;
+    --page: #faf7ee;
+    --page-2: #f2ede1;
+    --spine: rgba(23,20,15,0.16);
+    --border: rgba(23,21,18,0.14);
+    --border-soft: rgba(23,21,18,0.08);
+    --ink: #1c1811;
+    --ink-soft: rgba(28,24,17,0.68);
+    --ink-faint: rgba(28,24,17,0.44);
+    --gold: #96733a;
+    --gold-ink: #6d5023;
+    --gold-08: rgba(150,115,58,0.09);
+    --gold-16: rgba(150,115,58,0.17);
+    --hl: rgba(214,168,64,0.38);
+    --hl-edge: #c99a3a;
+    --shadow: rgba(20,16,8,0.28);
+    --serif: 'Noto Serif TC', 'Georgia', serif;
     --tc: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --bg: #0c0c0c;
-      --bg-soft: #111111;
-      --surface: #141414;
-      --surface-2: #1a1a1a;
-      --border: rgba(255,255,255,0.09);
-      --border-soft: rgba(255,255,255,0.055);
-      --ink: #ece9e0;
-      --ink-soft: rgba(236,233,224,0.66);
-      --ink-faint: rgba(236,233,224,0.42);
-      --gold: #c8a96e;
-      --gold-ink: #e4cd9e;
-      --gold-08: rgba(200,169,110,0.09);
-      --gold-16: rgba(200,169,110,0.18);
-      --live: #7fb589;
-      --live-bg: rgba(127,181,137,0.12);
-      --partial: #cf9256;
-      --partial-bg: rgba(207,146,86,0.12);
-      --planned: #8fa8c8;
-      --planned-bg: rgba(143,168,200,0.12);
+      --bg: #0b0a08;
+      --desk: #100e0a;
+      --page: #18150f;
+      --page-2: #1e1a13;
+      --spine: rgba(0,0,0,0.5);
+      --border: rgba(232,220,190,0.12);
+      --border-soft: rgba(232,220,190,0.07);
+      --ink: #ece5d4;
+      --ink-soft: rgba(236,229,212,0.68);
+      --ink-faint: rgba(236,229,212,0.42);
+      --gold: #cda765;
+      --gold-ink: #e6c98a;
+      --gold-08: rgba(205,167,101,0.10);
+      --gold-16: rgba(205,167,101,0.18);
+      --hl: rgba(205,167,101,0.24);
+      --hl-edge: #cda765;
+      --shadow: rgba(0,0,0,0.55);
     }
   }
   :root[data-theme="dark"]{
-    --bg: #0c0c0c; --bg-soft: #111111; --surface: #141414; --surface-2: #1a1a1a;
-    --border: rgba(255,255,255,0.09); --border-soft: rgba(255,255,255,0.055);
-    --ink: #ece9e0; --ink-soft: rgba(236,233,224,0.66); --ink-faint: rgba(236,233,224,0.42);
-    --gold: #c8a96e; --gold-ink: #e4cd9e; --gold-08: rgba(200,169,110,0.09); --gold-16: rgba(200,169,110,0.18);
-    --live: #7fb589; --live-bg: rgba(127,181,137,0.12);
-    --partial: #cf9256; --partial-bg: rgba(207,146,86,0.12);
-    --planned: #8fa8c8; --planned-bg: rgba(143,168,200,0.12);
+    --bg: #0b0a08; --desk: #100e0a; --page: #18150f; --page-2: #1e1a13; --spine: rgba(0,0,0,0.5);
+    --border: rgba(232,220,190,0.12); --border-soft: rgba(232,220,190,0.07);
+    --ink: #ece5d4; --ink-soft: rgba(236,229,212,0.68); --ink-faint: rgba(236,229,212,0.42);
+    --gold: #cda765; --gold-ink: #e6c98a; --gold-08: rgba(205,167,101,0.10); --gold-16: rgba(205,167,101,0.18);
+    --hl: rgba(205,167,101,0.24); --hl-edge: #cda765; --shadow: rgba(0,0,0,0.55);
   }
   :root[data-theme="light"]{
-    --bg: #ece9e0; --bg-soft: #e1ddce; --surface: #f7f5ee; --surface-2: #ffffff;
-    --border: rgba(23,21,18,0.12); --border-soft: rgba(23,21,18,0.07);
-    --ink: #17140f; --ink-soft: rgba(23,20,15,0.64); --ink-faint: rgba(23,20,15,0.42);
-    --gold: #a8813f; --gold-ink: #7a5c26; --gold-08: rgba(168,129,63,0.08); --gold-16: rgba(168,129,63,0.16);
-    --live: #3f7a4c; --live-bg: rgba(63,122,76,0.10);
-    --partial: #9c5f2c; --partial-bg: rgba(156,95,44,0.10);
-    --planned: #4f6788; --planned-bg: rgba(79,103,136,0.10);
+    --bg: #d8d2c0; --desk: #cec6ae; --page: #faf7ee; --page-2: #f2ede1; --spine: rgba(23,20,15,0.16);
+    --border: rgba(23,21,18,0.14); --border-soft: rgba(23,21,18,0.08);
+    --ink: #1c1811; --ink-soft: rgba(28,24,17,0.68); --ink-faint: rgba(28,24,17,0.44);
+    --gold: #96733a; --gold-ink: #6d5023; --gold-08: rgba(150,115,58,0.09); --gold-16: rgba(150,115,58,0.17);
+    --hl: rgba(214,168,64,0.38); --hl-edge: #c99a3a; --shadow: rgba(20,16,8,0.28);
   }
 
   *{box-sizing:border-box;}
-  body{background:var(--bg); color:var(--ink);}
-  .doc{font-family:var(--tc); background:var(--bg); color:var(--ink); line-height:1.6; min-height:100vh;}
-  .doc :lang(en), .doc .lat{font-family:var(--sans);}
-
+  html,body{height:100%;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink); overflow:hidden;
+    font-family:var(--tc);
+    background-image:
+      radial-gradient(ellipse 70% 50% at 50% -10%, var(--gold-08) 0%, transparent 60%),
+      repeating-linear-gradient(115deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 3px);
+  }
   a{color:inherit;}
-  .eyebrow{font-family:var(--sans); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint);}
+  button{font:inherit; color:inherit;}
+  ::selection{background:var(--hl);}
 
-  /* ---------- shell ---------- */
-  .shell{display:grid; grid-template-columns:264px 1fr; max-width:1240px; margin:0 auto;}
-  @media (max-width:920px){ .shell{grid-template-columns:1fr;} }
+  /* ================= STAGE / BOOK ================= */
+  .stage{
+    position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+    perspective:2200px; padding:min(6vh,56px) 20px;
+  }
+  .book{
+    position:relative; width:min(760px, 92vw); height:min(84vh, 900px);
+    filter:drop-shadow(0 30px 50px var(--shadow));
+  }
+  .leaf{
+    position:absolute; inset:0; background:var(--page);
+    border:1px solid var(--border); border-radius:3px 10px 10px 3px;
+    display:flex; flex-direction:column; overflow:hidden;
+    transform-origin:left center; backface-visibility:hidden;
+    transition:transform .46s cubic-bezier(.5,0,.25,1), opacity .4s ease;
+    background-image:linear-gradient(90deg, var(--spine) 0, transparent 22px), linear-gradient(180deg, var(--page-2), var(--page) 90px);
+  }
+  .leaf.turn-next-out{ transform:rotateY(-114deg); opacity:.15; }
+  .leaf.turn-prev-out{ transform-origin:right center; transform:rotateY(114deg); opacity:.15; }
+  .leaf.enter-from-next{ transform-origin:right center; transform:rotateY(114deg); opacity:0; }
+  .leaf.enter-from-prev{ transform-origin:left center; transform:rotateY(-114deg); opacity:0; }
+  .leaf.settled{ transform:rotateY(0deg); opacity:1; }
 
-  /* ---------- sidebar ---------- */
-  .side{position:sticky; top:0; align-self:start; height:100vh; overflow-y:auto; padding:28px 20px 40px; border-right:1px solid var(--border-soft);}
-  @media (max-width:920px){ .side{position:static; height:auto; border-right:none; border-bottom:1px solid var(--border-soft); padding:20px 20px 8px;} }
-  .side-mark{font-family:var(--sans); font-weight:700; font-size:15px; letter-spacing:0.04em;}
-  .side-mark span{color:var(--gold);}
-  .side-sub{font-size:12px; color:var(--ink-faint); margin-top:4px; line-height:1.5;}
-  .side-legend{margin-top:20px; padding:12px 14px; background:var(--surface); border:1px solid var(--border-soft); border-radius:10px; font-size:12px;}
-  .side-legend-row{display:flex; align-items:center; gap:8px; padding:3px 0; color:var(--ink-soft);}
-  .dot{width:7px; height:7px; border-radius:50%; flex:none;}
-  .dot.live{background:var(--live);} .dot.partial{background:var(--partial);} .dot.planned{background:var(--planned);}
+  .page-scroll{ flex:1; overflow-y:auto; padding:46px 52px 30px; }
+  @media (max-width:640px){ .page-scroll{ padding:34px 22px 22px; } }
+  .page-scroll::-webkit-scrollbar{width:5px;}
+  .page-scroll::-webkit-scrollbar-thumb{background:var(--gold-16); border-radius:99px;}
 
-  .toc{list-style:none; margin:18px 0 0; padding:0; font-size:13px;}
-  .toc li{border-bottom:1px solid var(--border-soft);}
-  .toc a{display:flex; align-items:center; gap:9px; padding:8px 2px; text-decoration:none; color:var(--ink-soft);}
-  .toc a:hover{color:var(--ink);}
-  .toc .num{font-family:var(--sans); font-variant-numeric:tabular-nums; color:var(--ink-faint); font-size:11px; width:16px; flex:none;}
-  .toc .name{flex:1;}
-  .toc .name b{font-weight:600; color:var(--ink);}
-  .toc .name em{display:block; font-style:normal; font-size:11px; color:var(--ink-faint);}
+  .running-head{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:14px 52px; border-bottom:1px solid var(--border-soft); flex:none;
+    font-family:var(--sans); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);
+  }
+  @media (max-width:640px){ .running-head{ padding:12px 22px; } }
+  .running-head b{ color:var(--gold-ink); font-weight:700; }
 
-  /* ---------- main ---------- */
-  main{padding:44px 40px 100px;}
-  @media (max-width:640px){ main{padding:32px 18px 80px;} }
+  .page-foot{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    padding:12px 20px; border-top:1px solid var(--border-soft); flex:none;
+    font-family:var(--sans); font-size:11px; color:var(--ink-faint); font-variant-numeric:tabular-nums;
+  }
+  .page-foot .rail{ width:120px; height:2px; background:var(--border); border-radius:99px; position:relative; overflow:hidden; }
+  .page-foot .rail i{ position:absolute; inset:0; width:var(--pct,0%); background:var(--gold); }
 
-  .intro{max-width:640px; margin-bottom:52px;}
-  .intro h1{font-family:var(--tc); font-size:30px; font-weight:700; margin:10px 0 12px; text-wrap:balance; letter-spacing:0.01em;}
-  .intro p{font-size:14.5px; color:var(--ink-soft); margin:0 0 10px; max-width:60ch;}
-  .intro .meta{display:flex; gap:18px; flex-wrap:wrap; margin-top:18px; font-size:12px; color:var(--ink-faint);}
-  .intro .meta strong{color:var(--ink-soft); font-weight:600;}
+  /* ================= NAV CHROME ================= */
+  .edge-tap{ position:fixed; top:0; bottom:0; width:9vw; max-width:120px; z-index:5; cursor:pointer; background:transparent; border:none; }
+  .edge-tap.l{ left:0; } .edge-tap.r{ right:0; }
+  .edge-tap:hover{ background:linear-gradient(90deg, var(--gold-08), transparent); }
+  .edge-tap.r:hover{ background:linear-gradient(270deg, var(--gold-08), transparent); }
 
-  .modules{display:flex; flex-direction:column; gap:26px;}
+  .chrome{ position:fixed; z-index:10; display:flex; align-items:center; gap:8px; }
+  .chrome.tl{ top:18px; left:18px; }
+  .chrome.tr{ top:18px; right:18px; }
+  .ic-btn{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    height:36px; padding:0 13px; border-radius:99px; border:1px solid var(--border);
+    background:var(--page); color:var(--ink-soft); cursor:pointer;
+    font-family:var(--sans); font-size:12px; transition:.15s;
+  }
+  .ic-btn:hover{ color:var(--gold-ink); border-color:var(--gold-16); }
+  .ic-btn svg{ width:14px; height:14px; flex:none; }
 
-  .mod{scroll-margin-top:24px; border:1px solid var(--border); border-radius:14px; background:var(--surface); overflow:hidden;}
-  .mod-head{display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:22px 26px; border-bottom:1px solid var(--border-soft); background:var(--gold-08);}
-  @media (max-width:640px){ .mod-head{flex-direction:column; padding:18px 18px;} }
-  .mod-head-left{display:flex; gap:16px; align-items:flex-start;}
-  .mod-num{font-family:var(--sans); font-size:12px; color:var(--gold); font-weight:700; letter-spacing:0.06em; padding-top:4px; width:24px; flex:none;}
-  .mod-tag{font-family:var(--sans); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-ink); font-weight:600;}
-  .mod-name{font-size:20px; font-weight:700; margin:3px 0 6px; letter-spacing:0.01em;}
-  .mod-purpose{font-size:13.5px; color:var(--ink-soft); max-width:52ch;}
+  /* ================= COVER ================= */
+  .cover{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px; position:relative; }
+  .cover-mark{ font-family:var(--sans); font-size:11px; letter-spacing:.32em; text-transform:uppercase; color:var(--ink-faint); }
+  .cover-orbit{ position:relative; width:88px; height:88px; margin:26px 0 20px; }
+  .cover-orbit .core{ position:absolute; inset:30px; border-radius:50%; background:var(--gold); box-shadow:0 0 24px var(--gold-16); }
+  .cover-orbit .ring{ position:absolute; inset:0; border:1px solid var(--gold-16); border-radius:50%; }
+  .cover-orbit .sat{ position:absolute; inset:0; animation:spin 9s linear infinite; }
+  .cover-orbit .sat i{ position:absolute; top:0; left:50%; width:6px; height:6px; margin-left:-3px; background:var(--gold); border-radius:50%; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  @media (prefers-reduced-motion:reduce){ .cover-orbit .sat{ animation:none; } }
+  .cover h1{ font-family:var(--serif); font-weight:900; font-size:clamp(42px,9vw,68px); margin:0; letter-spacing:.02em; text-wrap:balance; }
+  .cover .sub{ font-family:var(--serif); font-size:clamp(16px,2.6vw,20px); color:var(--ink-soft); margin:10px 0 0; }
+  .cover .ed{ margin-top:28px; font-family:var(--sans); font-size:11.5px; letter-spacing:.08em; color:var(--ink-faint); }
+  .cover .open-btn{
+    margin-top:40px; display:inline-flex; align-items:center; gap:10px; cursor:pointer;
+    padding:13px 30px; border-radius:99px; border:1px solid var(--gold-16); background:var(--gold-08);
+    font-family:var(--tc); font-size:14px; font-weight:600; color:var(--gold-ink); transition:.18s;
+  }
+  .cover .open-btn:hover{ background:var(--gold-16); transform:translateY(-1px); }
 
-  .status{display:inline-flex; align-items:center; gap:6px; font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:0.03em; padding:5px 11px 5px 9px; border-radius:99px; white-space:nowrap; flex:none;}
-  .status .dot{width:6px; height:6px;}
-  .status.live{background:var(--live-bg); color:var(--live);}
-  .status.partial{background:var(--partial-bg); color:var(--partial);}
-  .status.planned{background:var(--planned-bg); color:var(--planned);}
+  /* ================= FOREWORD / TOC / GENERIC ================= */
+  .lead-eyebrow{ font-family:var(--sans); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-ink); margin:0 0 14px; }
+  .lead-h{ font-family:var(--serif); font-size:clamp(26px,4vw,32px); font-weight:700; margin:0 0 22px; text-wrap:balance; }
+  .prose p{ font-family:var(--tc); font-size:15px; line-height:2; color:var(--ink-soft); margin:0 0 16px; max-width:56ch; }
+  .prose .sign{ margin-top:26px; font-family:var(--serif); font-size:14px; color:var(--ink-faint); font-style:italic; }
 
-  .mod-body{display:grid; grid-template-columns:1.15fr 1fr; gap:0;}
-  @media (max-width:760px){ .mod-body{grid-template-columns:1fr;} }
-  .mod-col{padding:22px 26px;}
-  @media (max-width:640px){ .mod-col{padding:18px 18px;} }
-  .mod-col + .mod-col{border-left:1px solid var(--border-soft);}
-  @media (max-width:760px){ .mod-col + .mod-col{border-left:none; border-top:1px solid var(--border-soft);} }
+  .toc-list{ list-style:none; margin:0; padding:0; }
+  .toc-list li + li{ border-top:1px solid var(--border-soft); }
+  .toc-list a{
+    display:flex; align-items:baseline; gap:10px; padding:13px 2px; text-decoration:none; color:var(--ink-soft);
+  }
+  .toc-list a:hover{ color:var(--gold-ink); }
+  .toc-num{ font-family:var(--sans); font-variant-numeric:tabular-nums; font-size:12px; color:var(--gold); width:20px; flex:none; }
+  .toc-name{ font-family:var(--tc); font-weight:600; color:var(--ink); white-space:nowrap; }
+  .toc-sub{ font-family:var(--tc); font-size:12px; color:var(--ink-faint); white-space:nowrap; }
+  .toc-dots{ flex:1; border-bottom:1px dotted var(--border); transform:translateY(-4px); min-width:16px; }
+  .toc-pg{ font-family:var(--sans); font-variant-numeric:tabular-nums; font-size:12px; color:var(--ink-faint); flex:none; }
 
-  .col-h{font-family:var(--sans); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 13px;}
+  /* ================= CHAPTER ================= */
+  .ch-head{ margin-bottom:24px; }
+  .ch-num{ font-family:var(--serif); font-size:13px; color:var(--gold); letter-spacing:.1em; }
+  .ch-title{ font-family:var(--serif); font-size:clamp(24px,4vw,30px); font-weight:700; margin:6px 0 8px; text-wrap:balance; }
+  .ch-purpose{ font-family:var(--serif); font-style:italic; font-size:14.5px; color:var(--ink-soft); max-width:52ch; line-height:1.7; }
 
-  .steps{list-style:none; margin:0; padding:0; counter-reset:step; display:flex; flex-direction:column; gap:10px;}
-  .steps li{counter-increment:step; display:flex; gap:11px; font-size:13.5px; color:var(--ink-soft);}
-  .steps li::before{content:counter(step); font-family:var(--sans); font-variant-numeric:tabular-nums; font-size:11px; font-weight:700; color:var(--gold); background:var(--gold-16); width:19px; height:19px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex:none; margin-top:1px;}
+  .sec-h{ font-family:var(--sans); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin:26px 0 12px; }
+  .sec-h:first-of-type{ margin-top:8px; }
 
-  .bullets{list-style:none; margin:0 0 16px; padding:0; display:flex; flex-direction:column; gap:8px;}
-  .bullets li{font-size:13.5px; color:var(--ink-soft); padding-left:14px; position:relative;}
-  .bullets li::before{content:""; position:absolute; left:0; top:8px; width:4px; height:4px; border-radius:50%; background:var(--ink-faint);}
+  .steps{ list-style:none; margin:0; padding:0; counter-reset:st; display:flex; flex-direction:column; gap:9px; }
+  .steps li{ counter-increment:st; display:flex; gap:11px; }
+  .steps li .n{ font-family:var(--sans); font-variant-numeric:tabular-nums; font-size:11px; font-weight:700; color:var(--gold); background:var(--gold-16); width:19px; height:19px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex:none; margin-top:2px; }
+  .steps li .n::before{ content:counter(st); }
 
-  .callout{margin-top:6px; padding:13px 15px; border-radius:9px; font-size:12.5px; line-height:1.65;}
-  .callout.partial{background:var(--partial-bg); color:var(--ink);}
-  .callout.planned{background:var(--planned-bg); color:var(--ink);}
-  .callout .lbl{font-family:var(--sans); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; display:block; margin-bottom:5px;}
-  .callout.partial .lbl{color:var(--partial);}
-  .callout.planned .lbl{color:var(--planned);}
+  .bullets{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; }
+  .bullets li{ display:flex; gap:10px; }
+  .bullets li .d{ width:4px; height:4px; border-radius:50%; background:var(--ink-faint); flex:none; margin-top:9px; }
 
-  .note-plain{font-size:12.5px; color:var(--ink-faint); font-style:italic;}
+  .hl-t{ display:block; font-size:14px; line-height:1.85; color:var(--ink-soft); cursor:pointer; border-radius:3px; padding:1px 4px; margin:-1px -4px; position:relative; transition:background .15s; }
+  .hl-t:hover{ background:var(--gold-08); }
+  .hl-t strong{ color:var(--ink); font-weight:600; }
+  .hl-t.hl{ background:var(--hl); box-shadow:inset 3px 0 0 var(--hl-edge); }
+  .hl-t.hl:hover{ background:var(--hl); }
 
-  footer.doc-foot{max-width:640px; margin-top:20px; padding-top:24px; border-top:1px solid var(--border-soft); font-size:12px; color:var(--ink-faint);}
+  .hint{
+    display:inline-flex; align-items:center; gap:7px; margin:0 0 22px; padding:7px 12px; border-radius:99px;
+    background:var(--gold-08); border:1px solid var(--border-soft); font-family:var(--sans); font-size:11.5px; color:var(--gold-ink);
+  }
+
+  .doc-foot-note{ margin-top:34px; padding-top:18px; border-top:1px solid var(--border-soft); font-family:var(--sans); font-size:11.5px; color:var(--ink-faint); }
+
+  /* ================= CLOSING ================= */
+  .closing{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px; gap:20px; }
+  .closing .line{ font-family:var(--serif); font-size:clamp(17px,2.6vw,21px); color:var(--ink); line-height:1.8; max-width:46ch; text-wrap:balance; }
+  .closing .line.soft{ color:var(--ink-soft); font-size:clamp(14px,2vw,16px); }
+  .closing .rule{ width:36px; height:1px; background:var(--gold-16); margin:6px 0; }
+  .closing .brand{ margin-top:22px; display:flex; align-items:center; gap:18px; }
+  .closing .brand img{ height:34px; width:auto; opacity:.92; }
+  .closing .co{ margin-top:16px; font-family:var(--sans); font-size:11px; color:var(--ink-faint); line-height:1.9; }
 </style>
 </head>
 <body>
 
-<div class="doc">
-  <div class="shell">
-    <aside class="side">
-      <div class="side-mark">ORBIT<span>·</span>模組手冊</div>
-      <div class="side-sub">13 個核心模組<br>一次看懂每個系統怎麼用</div>
+<div class="stage"><div class="book" id="book">
+  <div class="leaf settled" id="leaf"></div>
+</div></div>
 
-      <ul class="toc">
-        <li><a href="#mod-01"><span class="num">01</span><span class="name"><b>ORBIT POS</b><em>智慧收銀</em></span></a></li>
-        <li><a href="#mod-02"><span class="num">02</span><span class="name"><b>QR SHOP</b><em>掃碼商務</em></span></a></li>
-        <li><a href="#mod-03"><span class="num">03</span><span class="name"><b>ORBIT ERP</b><em>資源規劃</em></span></a></li>
-        <li><a href="#mod-04"><span class="num">04</span><span class="name"><b>ORBIT RSVP</b><em>預約與候位</em></span></a></li>
-        <li><a href="#mod-05"><span class="num">05</span><span class="name"><b>ORBIT LINE</b><em>LINE 整合</em></span></a></li>
-        <li><a href="#mod-06"><span class="num">06</span><span class="name"><b>ORBIT FLOW</b><em>營運管理</em></span></a></li>
-        <li><a href="#mod-07"><span class="num">07</span><span class="name"><b>ORBIT AUTH</b><em>權限管控</em></span></a></li>
-        <li><a href="#mod-08"><span class="num">08</span><span class="name"><b>ORBIT HR</b><em>人事考勤</em></span></a></li>
-        <li><a href="#mod-09"><span class="num">09</span><span class="name"><b>ORBIT CRM</b><em>會員經營</em></span></a></li>
-        <li><a href="#mod-10"><span class="num">10</span><span class="name"><b>ORBIT WMS</b><em>倉儲管理</em></span></a></li>
-        <li><a href="#mod-11"><span class="num">11</span><span class="name"><b>ORBIT AI</b><em>智慧自動化</em></span></a></li>
-        <li><a href="#mod-12"><span class="num">12</span><span class="name"><b>ORBIT PMS</b><em>旅宿管理</em></span></a></li>
-        <li><a href="#mod-13"><span class="num">13</span><span class="name"><b>ORBIT ESTATE</b><em>豪宅管家</em></span></a></li>
-      </ul>
-    </aside>
+<button type="button" class="edge-tap l" id="tapPrev" aria-label="上一頁"></button>
+<button type="button" class="edge-tap r" id="tapNext" aria-label="下一頁"></button>
 
-    <main>
-      <div class="intro">
-        <p class="eyebrow">ORBIT 使用手冊</p>
-        <h1>模組操作與介面手冊</h1>
-        <p>ORBIT 由 13 個核心模組組成，涵蓋收銀、會員、庫存、人事、預約到旅宿與物業管理。這份手冊逐一說明每個模組「怎麼操作」與「畫面上有什麼」，讓您快速上手、掌握系統的完整能耐。</p>
-        <div class="meta">
-          <span><strong>文件版本</strong> 2026-07</span>
-          <span><strong>適用系統</strong> ORBIT（app.obarai.com）</span>
-          <span><strong>模組總數</strong> 13</span>
-        </div>
-      </div>
-
-      <div class="modules">
-
-        <!-- 01 POS -->
-        <section class="mod" id="mod-01">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">01</div>
-              <div>
-                <div class="mod-tag">ORBIT POS</div>
-                <div class="mod-name">智慧收銀</div>
-                <p class="mod-purpose">每一筆買賣的收銀台——選品、加購、改價、結帳、開發票，一頁完成。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明</p>
-              <ol class="steps">
-                <li>依分類點選商品加入購物車，或直接掃描條碼快速加入</li>
-                <li>購物車項目右滑可加備註／客製選項，左滑可刪除；多件商品可「拆開」讓每件套用不同選項</li>
-                <li>需要招待或折扣時，點「招待」或「套用折扣」，輸入主管授權碼後生效</li>
-                <li>餐飲業：先選桌位與人數，「滑動送單」出餐；用餐完成後「滑動結帳」</li>
-                <li>其他業別：選擇付款方式（現金／卡片／電子支付）後滑動結帳</li>
-                <li>結帳時可選收據、二聯／三聯發票或手機條碼載具（可掃碼輸入）</li>
-                <li>開啟「電話訂餐」開關可登記電話訂單的聯絡電話與取餐時間</li>
-              </ol>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>左側：商品格狀選單（分類頁籤＋搜尋＋條碼掃描）</li>
-                <li>右側：購物車面板（品項、數量增減、小計）</li>
-                <li>服務生角色只看得到「送單」，看不到收款功能，避免誤觸金流</li>
-              </ul>            </div>
-          </div>
-        </section>
-
-        <!-- 02 QR SHOP -->
-        <section class="mod" id="mod-02">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">02</div>
-              <div>
-                <div class="mod-tag">ORBIT QR SHOP</div>
-                <div class="mod-name">掃碼商務</div>
-                <p class="mod-purpose">客人手機掃碼看菜單、自己下單，不用登入、不用下載 App。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明</p>
-              <ol class="steps">
-                <li>到「設定 → QR code 線上點餐」產生專屬 QR code，下載後印在桌牌或菜單上</li>
-                <li>客人掃碼進入歡迎頁（可選擇加 LINE 好友）</li>
-                <li>點「開始點餐」瀏覽分類商品、加入購物車</li>
-                <li>填寫姓名與電話，選「立即取餐（15分鐘）」或預約時間</li>
-                <li>送出後系統給訂單號碼，提示「請至櫃檯結帳取餐」</li>
-                <li>店內「訂單管理」會跳出新訂單通知，可設定自動列印出單</li>
-              </ol>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>客人端：全螢幕點餐頁（分類頁籤、浮動購物車按鈕、下單表單）</li>
-                <li>店家端：訂單清單以「線上」標籤標示這類訂單</li>
-                <li>另有獨立的「候位掃碼」系統，客人掃碼排隊、輪到時手機收到通知</li>
-              </ul>            </div>
-          </div>
-        </section>
-
-        <!-- 03 ERP -->
-        <section class="mod" id="mod-03">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">03</div>
-              <div>
-                <div class="mod-tag">ORBIT ERP</div>
-                <div class="mod-name">資源規劃</div>
-                <p class="mod-purpose">庫存、採購單、財務報表的核心後台。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明</p>
-              <ul class="bullets">
-                <li><strong style="color:var(--ink)">庫存</strong>——「新增商品」建檔（含規格／客製選項），庫存不足會有缺貨提示；「庫存調整」記錄進貨／出貨／盤點差異；支援 CSV 匯出匯入</li>
-                <li><strong style="color:var(--ink)">採購</strong>——先建立供應商，「新增採購單」選供應商與品項，狀態從草稿一路推進到已到貨</li>
-                <li><strong style="color:var(--ink)">財務總覽</strong>——選月份看營收／毛利／預估稅額／淨利，並有「ORBIT AI 財務顧問」可直接問數字</li>
-                <li><strong style="color:var(--ink)">稅務中心</strong>——查看銷項／進項稅額與可扣抵成本分類（僅供估算參考）</li>
-                <li><strong style="color:var(--ink)">SaaS／金流中心</strong>——目前為報表頁面，資料需後台手動建立才會顯示</li>
-              </ul>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>庫存頁：商品表格＋快速篩選（全部／缺貨／停用）</li>
-                <li>採購頁：供應商清單＋採購單清單雙欄式</li>
-                <li>財務頁：頂部 4 張 KPI 卡＋圖表＋內嵌 AI 問答</li>
-              </ul>            </div>
-          </div>
-        </section>
-
-        <!-- 04 RSVP -->
-        <section class="mod" id="mod-04">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">04</div>
-              <div>
-                <div class="mod-tag">ORBIT RSVP</div>
-                <div class="mod-name">預約與候位</div>
-                <p class="mod-purpose">線上訂位、現場候位、外送單，一次管理。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明</p>
-              <ul class="bullets">
-                <li><strong style="color:var(--ink)">訂位</strong>——「新增訂位」登記姓名電話時間人數，狀態從待確認推進到已完成</li>
-                <li><strong style="color:var(--ink)">現場候位</strong>（適合咖啡廳等業別）——登記到店客人姓名電話人數，狀態候位中→已叫號→已入座</li>
-                <li><strong style="color:var(--ink)">桌位管理</strong>——先跑「桌位設定」精靈設好分區與桌數，之後可看即時桌況（空桌／用餐中／結帳中），空桌按「叫號」直接推播下一組候位客人</li>
-                <li><strong style="color:var(--ink)">外送</strong>——管理 Foodpanda／Uber Eats 訂單，接受／拒絕／完成備餐／取餐狀態切換</li>
-              </ul>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>訂位頁：日期切換＋清單</li>
-                <li>桌位頁：依分區呈現的樓面圖，顏色代表桌況</li>
-                <li>外送頁：看板式訂單卡片</li>
-              </ul>            </div>
-          </div>
-        </section>
-
-        <!-- 05 LINE -->
-        <section class="mod" id="mod-05">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">05</div>
-              <div>
-                <div class="mod-tag">ORBIT LINE</div>
-                <div class="mod-name">LINE 整合</div>
-                <p class="mod-purpose">串接 LINE 官方帳號，讓訂位／候位／訂單通知自動推播給客人。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明</p>
-              <ol class="steps">
-                <li>進入「串接 LINE 官方帳號」，貼上 Channel Access Token 與 Channel ID</li>
-                <li>複製系統提供的 webhook 網址，貼回 LINE 官方帳號後台設定</li>
-                <li>顯示「已串接」後，訂位提醒／叫號通知／線上點餐通知即自動生效</li>
-              </ol>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>串接項目以卡片呈現：LINE 官方帳號、Google 商家檔案、Google 日曆、電子發票、Facebook、EDM、IG Marketing</li>
-                <li>除 LINE 外皆標示「即將上線」</li>
-              </ul>            </div>
-          </div>
-        </section>
-
-        <!-- 06 FLOW -->
-        <section class="mod" id="mod-06">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">06</div>
-              <div>
-                <div class="mod-tag">ORBIT FLOW</div>
-                <div class="mod-name">營運管理</div>
-                <p class="mod-purpose">多門市總覽、跨店調貨、人員調度。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明（畫面操作方式）</p>
-              <ul class="bullets">
-                <li><strong style="color:var(--ink)">多門市總覽</strong>——看各分店今日營收／交易數／在線人力／庫存警示／候位人數卡片，點卡片可看「進入門市／調貨／支援」選項</li>
-                <li><strong style="color:var(--ink)">分店調貨</strong>——「新增調貨單」選來源／目的分店與品項，狀態從待核准推進到已收貨</li>
-                <li><strong style="color:var(--ink)">人員調度</strong>——「新增支援申請」登記員工跨店支援的門市、班別與原因，主管可核准或取消</li>
-              </ul>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>三頁皆為卡片＋清單式設計，操作邏輯清楚易懂</li>
-              </ul>            </div>
-          </div>
-        </section>
-
-        <!-- 07 AUTH -->
-        <section class="mod" id="mod-07">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">07</div>
-              <div>
-                <div class="mod-tag">ORBIT AUTH</div>
-                <div class="mod-name">權限管控</div>
-                <p class="mod-purpose">依角色（服務生／收銀／店長／管理者）決定看得到什麼、能做什麼。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明</p>
-              <ul class="bullets">
-                <li>「設定 → 目前角色」切換操作角色，決定畫面能看到哪些功能</li>
-                <li>「設定 → 安全與權限」設定主管授權密碼，並選擇折扣／作廢／退款等動作是否需要授權碼</li>
-                <li>「設定 → 操作記錄保留天數」設定日誌保留期間</li>
-              </ul>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>角色權限主要是背景邏輯，沒有獨立的「權限管理」畫面，透過設定頁的卡片呈現</li>
-              </ul>            </div>
-          </div>
-        </section>
-
-        <!-- 08 HR -->
-        <section class="mod" id="mod-08">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">08</div>
-              <div>
-                <div class="mod-tag">ORBIT HR</div>
-                <div class="mod-name">人事考勤</div>
-                <p class="mod-purpose">員工建檔、打卡、請假、薪資試算。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明</p>
-              <ul class="bullets">
-                <li><strong style="color:var(--ink)">員工</strong>——「新增員工」登記基本資料、班別、角色、計薪方式；「薪資單」依打卡紀錄自動算出出勤天數／時數／遲到／請假天數與薪資；「待審核」處理員工自行註冊的帳號</li>
-                <li><strong style="color:var(--ink)">打卡</strong>——選員工後打卡上下班，系統記錄 GPS 位置，可開啟電子圍籬限制打卡範圍（範圍外需申請外勤授權）</li>
-                <li><strong style="color:var(--ink)">請假申請</strong>——選假別、日期區間、原因，送出後等待審核</li>
-                <li><strong style="color:var(--ink)">補打卡申請</strong>——忘記打卡時可補登，送交主管核准</li>
-              </ul>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>打卡頁：大型打卡狀態卡＋本週出勤統計</li>
-                <li>員工頁：三分頁（名單／薪資單／待審核）</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- 09 CRM -->
-        <section class="mod" id="mod-09">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">09</div>
-              <div>
-                <div class="mod-tag">ORBIT CRM</div>
-                <div class="mod-name">會員經營</div>
-                <p class="mod-purpose">累積每位客人的消費紀錄，自動分級、記點，找出誰是 VIP。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明</p>
-              <ol class="steps">
-                <li>「新增客戶」登記姓名電話（必填），生日／信箱／備註可選填——填越完整，生日禮／等級升級／LINE 推播才會準</li>
-                <li>客戶清單可搜尋，支援 CSV 匯出匯入</li>
-                <li>點進客戶詳細頁可看消費紀錄、剩餘點數、目前等級（一般／會員／金卡／VIP，依累積消費 NT$1.5 萬／5 萬自動升級）</li>
-                <li>「備註」分頁可記錄客戶偏好等資訊</li>
-              </ol>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>清單頁頂部 4 張統計卡（總客戶數／活躍客戶／平均消費／總點數）</li>
-                <li>詳細頁：等級徽章＋4 張數據卡＋消費紀錄／備註分頁</li>
-              </ul>            </div>
-          </div>
-        </section>
-
-        <!-- 10 WMS -->
-        <section class="mod" id="mod-10">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">10</div>
-              <div>
-                <div class="mod-tag">ORBIT WMS</div>
-                <div class="mod-name">倉儲管理</div>
-                <p class="mod-purpose">進貨、出貨、盤點集中管理，庫存異動即時反映在系統上。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明</p>
-              <ol class="steps">
-                <li>商品進貨、出貨時於「庫存調整」登記異動類型與數量</li>
-                <li>盤點時選擇「盤點調整」，系統依實際數量校正庫存</li>
-                <li>需要跨門市調度庫存時，可透過 ORBIT FLOW 模組協同處理調貨</li>
-              </ol>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>庫存異動記錄整合於商品管理頁面，操作與查詢一站完成</li>
-                <li>支援 CSV 匯出匯入，方便大量盤點與資料轉移</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- 11 AI -->
-        <section class="mod" id="mod-11">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">11</div>
-              <div>
-                <div class="mod-tag">ORBIT AI</div>
-                <div class="mod-name">智慧自動化</div>
-                <p class="mod-purpose">用問答的方式查銷售數字、抓補貨建議、看損益。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明</p>
-              <ol class="steps">
-                <li>進入 AI 頁面，可直接點選建議提問（本月熱銷／三個月趨勢／低庫存提醒／月增減）或自行輸入問題</li>
-                <li>送出後 AI 以文字＋表格回覆</li>
-                <li>財務總覽頁也內嵌同一套 AI，可直接針對當月財務數字提問</li>
-              </ol>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>單頁式對話框，類似聊天視窗</li>
-                <li>依方案提供對應 AI 使用額度，用量與剩餘額度可隨時查詢</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- 12 PMS -->
-        <section class="mod" id="mod-12">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">12</div>
-              <div>
-                <div class="mod-tag">ORBIT PMS</div>
-                <div class="mod-name">旅宿管理</div>
-                <p class="mod-purpose">房態總覽、訂房、清潔、維修、OTA 通路，旅宿業的營運中樞。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明</p>
-              <ul class="bullets">
-                <li><strong style="color:var(--ink)">房況看板</strong>——依樓層看房間狀態（空房／入住中／已預訂／待清潔／清潔中／維修中／鎖房），點房間可改狀態或看訂房詳情</li>
-                <li><strong style="color:var(--ink)">訂房</strong>——「新增訂房」填客人資料、房型房號、日期、訂房來源（官網／OTA 平台／電話／現場）、訂金等</li>
-                <li>今日入住／退房清單可一鍵 Check-In（選卡片鑰匙或傳統鑰匙）／Check-Out</li>
-                <li><strong style="color:var(--ink)">房務</strong>——任務看板（待派工／清潔中／已完成／已檢查），可指派員工</li>
-                <li><strong style="color:var(--ink)">自助入住</strong>——產生給房客的線上報到連結／PIN 碼</li>
-                <li><strong style="color:var(--ink)">備品管理</strong>——依類別管理房間備品庫存，低於安全量會提醒</li>
-                <li><strong style="color:var(--ink)">維修管理</strong>——報修單看板（待處理／維修中／已完成）</li>
-                <li><strong style="color:var(--ink)">OTA 通路管理</strong>——管理 Booking.com／Agoda／Expedia 等通路開關與抽成比例，可按「同步」</li>
-              </ul>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>主看板為房間格狀圖，顏色代表房況</li>
-                <li>子功能各自獨立頁面（房務／自助入住／備品／維修／OTA）</li>
-              </ul>            </div>
-          </div>
-        </section>
-
-        <!-- 13 ESTATE -->
-        <section class="mod" id="mod-13">
-          <div class="mod-head">
-            <div class="mod-head-left">
-              <div class="mod-num">13</div>
-              <div>
-                <div class="mod-tag">ORBIT ESTATE</div>
-                <div class="mod-name">豪宅管家</div>
-                <p class="mod-purpose">為高端住宅／建案打造的智慧宅管家——住戶服務、公設預約、包裹代收、智慧宅控。</p>
-              </div>
-            </div>          </div>
-          <div class="mod-body">
-            <div class="mod-col">
-              <p class="col-h">操作說明</p>
-              <ol class="steps">
-                <li>住戶透過 App 或掃碼登入個人化管家介面</li>
-                <li>「公設預約」選擇健身房／泳池／宴會廳等公共設施的可用時段並預約</li>
-                <li>「包裹代收」收到包裹時系統通知住戶，並記錄簽收與取件狀態</li>
-                <li>「住戶服務」提交報修／客服需求，物業端追蹤處理進度</li>
-                <li>「智慧宅控」串接智慧家庭裝置（門禁／燈光／空調等），住戶可遠端操作</li>
-              </ol>
-            </div>
-            <div class="mod-col">
-              <p class="col-h">介面說明</p>
-              <ul class="bullets">
-                <li>比照 PMS 的看板式設計，以「住戶／單位」取代「房間」作為管理單位</li>
-                <li>物業端設總覽儀表板，追蹤所有服務請求</li>
-              </ul>            </div>
-          </div>
-        </section>
-
-      </div>
-
-      <footer class="doc-foot">
-        ORBIT by OBARAI INTELLIGENCE · 如需為您的產業客製功能，歡迎洽詢 studio@obarai.com
-      </footer>
-    </main>
-  </div>
+<div class="chrome tl">
+  <button type="button" class="ic-btn" id="btnCover" title="封面">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+  </button>
+  <button type="button" class="ic-btn" id="btnToc" title="目錄">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M4 12h16M4 18h10"/></svg>目錄
+  </button>
 </div>
+<div class="chrome tr">
+  <button type="button" class="ic-btn" id="btnPrev" title="上一頁">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"/></svg>
+  </button>
+  <button type="button" class="ic-btn" id="btnNext" title="下一頁">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var MODS = [
+    { tag:"ORBIT POS", name:"智慧收銀", purpose:"每一筆買賣的收銀台——選品、加購、改價、結帳、開發票，一頁完成。",
+      steps:["依分類點選商品加入購物車，或直接掃描條碼快速加入",
+             "購物車項目右滑可加備註／客製選項，左滑可刪除；多件商品可「拆開」讓每件套用不同選項",
+             "需要招待或折扣時，點「招待」或「套用折扣」，輸入主管授權碼後生效",
+             "餐飲業：先選桌位與人數，「滑動送單」出餐；用餐完成後「滑動結帳」",
+             "其他業別：選擇付款方式（現金／卡片／電子支付）後滑動結帳",
+             "結帳時可選收據、二聯／三聯發票或手機條碼載具（可掃碼輸入）",
+             "開啟「電話訂餐」開關可登記電話訂單的聯絡電話與取餐時間"],
+      bullets:["左側：商品格狀選單（分類頁籤＋搜尋＋條碼掃描）","右側：購物車面板（品項、數量增減、小計）","服務生角色只看得到「送單」，看不到收款功能，避免誤觸金流"] },
+    { tag:"ORBIT QR SHOP", name:"掃碼商務", purpose:"客人手機掃碼看菜單、自己下單，不用登入、不用下載 App。",
+      steps:["到「設定 → QR code 線上點餐」產生專屬 QR code，下載後印在桌牌或菜單上",
+             "客人掃碼進入歡迎頁（可選擇加 LINE 好友）",
+             "點「開始點餐」瀏覽分類商品、加入購物車",
+             "填寫姓名與電話，選「立即取餐（15分鐘）」或預約時間",
+             "送出後系統給訂單號碼，提示「請至櫃檯結帳取餐」",
+             "店內「訂單管理」會跳出新訂單通知，可設定自動列印出單"],
+      bullets:["客人端：全螢幕點餐頁（分類頁籤、浮動購物車按鈕、下單表單）","店家端：訂單清單以「線上」標籤標示這類訂單","另有獨立的「候位掃碼」系統，客人掃碼排隊、輪到時手機收到通知"] },
+    { tag:"ORBIT ERP", name:"資源規劃", purpose:"庫存、採購單、財務報表的核心後台。",
+      bulletsA:["<strong>庫存</strong>——「新增商品」建檔（含規格／客製選項），庫存不足會有缺貨提示；「庫存調整」記錄進貨／出貨／盤點差異；支援 CSV 匯出匯入",
+             "<strong>採購</strong>——先建立供應商，「新增採購單」選供應商與品項，狀態從草稿一路推進到已到貨",
+             "<strong>財務總覽</strong>——選月份看營收／毛利／預估稅額／淨利，並有「ORBIT AI 財務顧問」可直接問數字",
+             "<strong>稅務中心</strong>——查看銷項／進項稅額與可扣抵成本分類（僅供估算參考）",
+             "<strong>SaaS／金流中心</strong>——目前為報表頁面，資料需後台手動建立才會顯示"],
+      bullets:["庫存頁：商品表格＋快速篩選（全部／缺貨／停用）","採購頁：供應商清單＋採購單清單雙欄式","財務頁：頂部 4 張 KPI 卡＋圖表＋內嵌 AI 問答"] },
+    { tag:"ORBIT RSVP", name:"預約與候位", purpose:"線上訂位、現場候位、外送單，一次管理。",
+      bulletsA:["<strong>訂位</strong>——「新增訂位」登記姓名電話時間人數，狀態從待確認推進到已完成",
+             "<strong>現場候位</strong>（適合咖啡廳等業別）——登記到店客人姓名電話人數，狀態候位中→已叫號→已入座",
+             "<strong>桌位管理</strong>——先跑「桌位設定」精靈設好分區與桌數，之後可看即時桌況（空桌／用餐中／結帳中），空桌按「叫號」直接推播下一組候位客人",
+             "<strong>外送</strong>——管理 Foodpanda／Uber Eats 訂單，接受／拒絕／完成備餐／取餐狀態切換"],
+      bullets:["訂位頁：日期切換＋清單","桌位頁：依分區呈現的樓面圖，顏色代表桌況","外送頁：看板式訂單卡片"] },
+    { tag:"ORBIT LINE", name:"LINE 整合", purpose:"串接 LINE 官方帳號，讓訂位／候位／訂單通知自動推播給客人。",
+      steps:["進入「串接 LINE 官方帳號」，貼上 Channel Access Token 與 Channel ID",
+             "複製系統提供的 webhook 網址，貼回 LINE 官方帳號後台設定",
+             "顯示「已串接」後，訂位提醒／叫號通知／線上點餐通知即自動生效"],
+      bullets:["串接項目以卡片呈現：LINE 官方帳號、Google 商家檔案、Google 日曆、電子發票、Facebook、EDM、IG Marketing","除 LINE 外皆標示「即將上線」"] },
+    { tag:"ORBIT FLOW", name:"營運管理", purpose:"多門市總覽、跨店調貨、人員調度。",
+      bulletsA:["<strong>多門市總覽</strong>——看各分店今日營收／交易數／在線人力／庫存警示／候位人數卡片，點卡片可看「進入門市／調貨／支援」選項",
+             "<strong>分店調貨</strong>——「新增調貨單」選來源／目的分店與品項，狀態從待核准推進到已收貨",
+             "<strong>人員調度</strong>——「新增支援申請」登記員工跨店支援的門市、班別與原因，主管可核准或取消"],
+      bullets:["三頁皆為卡片＋清單式設計，操作邏輯清楚易懂"] },
+    { tag:"ORBIT AUTH", name:"權限管控", purpose:"依角色（服務生／收銀／店長／管理者）決定看得到什麼、能做什麼。",
+      bulletsA:["「設定 → 目前角色」切換操作角色，決定畫面能看到哪些功能",
+             "「設定 → 安全與權限」設定主管授權密碼，並選擇折扣／作廢／退款等動作是否需要授權碼",
+             "「設定 → 操作記錄保留天數」設定日誌保留期間"],
+      bullets:["角色權限主要是背景邏輯，沒有獨立的「權限管理」畫面，透過設定頁的卡片呈現"] },
+    { tag:"ORBIT HR", name:"人事考勤", purpose:"員工建檔、打卡、請假、薪資試算。",
+      bulletsA:["<strong>員工</strong>——「新增員工」登記基本資料、班別、角色、計薪方式；「薪資單」依打卡紀錄自動算出出勤天數／時數／遲到／請假天數與薪資；「待審核」處理員工自行註冊的帳號",
+             "<strong>打卡</strong>——選員工後打卡上下班，系統記錄 GPS 位置，可開啟電子圍籬限制打卡範圍（範圍外需申請外勤授權）",
+             "<strong>請假申請</strong>——選假別、日期區間、原因，送出後等待審核",
+             "<strong>補打卡申請</strong>——忘記打卡時可補登，送交主管核准"],
+      bullets:["打卡頁：大型打卡狀態卡＋本週出勤統計","員工頁：三分頁（名單／薪資單／待審核）"] },
+    { tag:"ORBIT CRM", name:"會員經營", purpose:"累積每位客人的消費紀錄，自動分級、記點，找出誰是 VIP。",
+      steps:["「新增客戶」登記姓名電話（必填），生日／信箱／備註可選填——填越完整，生日禮／等級升級／LINE 推播才會準",
+             "客戶清單可搜尋，支援 CSV 匯出匯入",
+             "點進客戶詳細頁可看消費紀錄、剩餘點數、目前等級（一般／會員／金卡／VIP，依累積消費 NT$1.5 萬／5 萬自動升級）",
+             "「備註」分頁可記錄客戶偏好等資訊"],
+      bullets:["清單頁頂部 4 張統計卡（總客戶數／活躍客戶／平均消費／總點數）","詳細頁：等級徽章＋4 張數據卡＋消費紀錄／備註分頁"] },
+    { tag:"ORBIT WMS", name:"倉儲管理", purpose:"多倉別、跨倉庫存同步、盤點與調撥，庫存異動即時反映在系統上。",
+      bulletsA:["<strong>倉別管理</strong>——依門市或倉庫建立多個倉別，指定其中一個為預設倉，單一門市客戶完全無感、多倉客戶隨時可加開新倉",
+             "<strong>庫存查詢</strong>——依倉別查詢每項商品即時庫存，跨倉低庫存自動彙總提醒",
+             "<strong>盤點</strong>——選定倉別開始盤點，系統先記錄當下庫存作為基準，逐一輸入實際盤點數，結束後只針對有落差的商品自動校正，並產出差異報表",
+             "<strong>調撥</strong>——調撥單狀態從待核准、已核准、運送中到已到貨，庫存會在正確的時間點自動增減，不會重複扣帳"],
+      bullets:["總覽頁：各倉庫存卡片＋跨倉低庫存警示彙總","倉別管理頁：新增／編輯／指定預設倉，操作方式比照商品管理","盤點頁：選倉開始或繼續盤點，逐商品輸入實際數量，結束後即時看到差異報表"] },
+    { tag:"ORBIT AI", name:"智慧自動化", purpose:"用問答的方式查銷售數字、抓補貨建議、看損益。",
+      steps:["進入 AI 頁面，可直接點選建議提問（本月熱銷／三個月趨勢／低庫存提醒／月增減）或自行輸入問題",
+             "送出後 AI 以文字＋表格回覆",
+             "財務總覽頁也內嵌同一套 AI，可直接針對當月財務數字提問"],
+      bullets:["單頁式對話框，類似聊天視窗","依方案提供對應 AI 使用額度，用量與剩餘額度可隨時查詢"] },
+    { tag:"ORBIT PMS", name:"旅宿管理", purpose:"房態總覽、訂房、清潔、維修、OTA 通路，旅宿業的營運中樞。",
+      bulletsA:["<strong>房況看板</strong>——依樓層看房間狀態（空房／入住中／已預訂／待清潔／清潔中／維修中／鎖房），點房間可改狀態或看訂房詳情",
+             "<strong>訂房</strong>——「新增訂房」填客人資料、房型房號、日期、訂房來源（官網／OTA 平台／電話／現場）、訂金等",
+             "今日入住／退房清單可一鍵 Check-In（選卡片鑰匙或傳統鑰匙）／Check-Out",
+             "<strong>房務</strong>——任務看板（待派工／清潔中／已完成／已檢查），可指派員工",
+             "<strong>自助入住</strong>——產生給房客的線上報到連結／PIN 碼",
+             "<strong>備品管理</strong>——依類別管理房間備品庫存，低於安全量會提醒",
+             "<strong>維修管理</strong>——報修單看板（待處理／維修中／已完成）",
+             "<strong>OTA 通路管理</strong>——管理 Booking.com／Agoda／Expedia 等通路開關與抽成比例，可按「同步」"],
+      bullets:["主看板為房間格狀圖，顏色代表房況","子功能各自獨立頁面（房務／自助入住／備品／維修／OTA）"] },
+    { tag:"ORBIT ESTATE", name:"豪宅管家", purpose:"為高端住宅／建案打造的智慧宅管家——住戶服務、公設預約、包裹代收、智慧宅控。",
+      steps:["住戶透過共用帳號登入個人化管家介面",
+             "「公設預約」選擇健身房／泳池／宴會廳等公共設施的可用時段並預約",
+             "「包裹代收」收到包裹時系統通知住戶，並記錄簽收與取件狀態",
+             "「訪客登記」預先登記訪客資訊，門口報到時一鍵查核",
+             "「住戶服務」提交報修／客服需求，物業端追蹤處理進度"],
+      bullets:["比照 PMS 的看板式設計，以「住戶／單位」取代「房間」作為管理單位","物業端設禮賓服務台，集中處理預約核准、包裹與訪客報到","智慧宅控（門禁／燈光／空調遠端操作）為下一階段規劃項目"] }
+  ];
+
+  var TOTAL = 4 + MODS.length; // cover + foreword + toc + modules + closing
+  var idx = 0;
+  var hlKey = "orbit-guide-hl-v1";
+  var posKey = "orbit-guide-pos-v1";
+  var hintKey = "orbit-guide-hint-seen";
+
+  function loadHl(){ try{ return new Set(JSON.parse(localStorage.getItem(hlKey)||"[]")); }catch(e){ return new Set(); } }
+  function saveHl(set){ try{ localStorage.setItem(hlKey, JSON.stringify(Array.from(set))); }catch(e){} }
+  var hlSet = loadHl();
+
+  function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+  function hlLine(pageId, i, html){
+    var id = pageId + ":" + i;
+    var on = hlSet.has(id) ? " hl" : "";
+    return '<span class="hl-t' + on + '" data-hid="' + id + '">' + html + '</span>';
+  }
+
+  function renderModule(m, n){
+    var pid = "m" + n;
+    var li = 0;
+    var opHtml = "";
+    if (m.steps){
+      opHtml = '<ol class="steps">' + m.steps.map(function(s){
+        li++; return '<li><span class="n"></span>' + hlLine(pid, li, esc(s)) + '</li>';
+      }).join("") + '</ol>';
+    } else if (m.bulletsA){
+      opHtml = '<ul class="bullets">' + m.bulletsA.map(function(s){
+        li++; return '<li><span class="d"></span>' + hlLine(pid, li, s) + '</li>';
+      }).join("") + '</ul>';
+    }
+    var ifaceHtml = '<ul class="bullets">' + m.bullets.map(function(s){
+      li++; return '<li><span class="d"></span>' + hlLine(pid, li, esc(s)) + '</li>';
+    }).join("") + '</ul>';
+
+    var hint = "";
+    if (n === 1 && !localStorage.getItem(hintKey)){
+      hint = '<div class="hint">✦ 點一下任何一行文字，就能畫重點——下次打開還在</div>';
+    }
+
+    return '<div class="ch-head"><div class="ch-num">第 ' + String(n).padStart(2,"0") + ' 章 · ' + m.tag + '</div>' +
+      '<h1 class="ch-title">' + m.name + '</h1><p class="ch-purpose">' + m.purpose + '</p></div>' +
+      hint +
+      '<p class="sec-h">怎麼操作</p>' + opHtml +
+      '<p class="sec-h">畫面上有什麼</p>' + ifaceHtml;
+  }
+
+  function renderPage(i){
+    if (i === 0){
+      return { head:"封面", body:
+        '<div class="cover">' +
+          '<div class="cover-mark">OBARAI INTELLIGENCE</div>' +
+          '<div class="cover-orbit"><div class="ring"></div><div class="core"></div><div class="sat"><i></i></div></div>' +
+          '<h1>ORBIT</h1>' +
+          '<p class="sub">操作與介面手冊</p>' +
+          '<p class="ed">2026 年版 · 第一版 · 13 個核心模組</p>' +
+          '<button type="button" class="open-btn" id="openBtn">翻開手冊<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>' +
+        '</div>' };
+    }
+    if (i === 1){
+      return { head:"序", body:
+        '<p class="lead-eyebrow">序</p><h1 class="lead-h">寫在最前面</h1>' +
+        '<div class="prose">' +
+        '<p>ORBIT 從來不是一套要你「先讀完手冊才敢動手」的系統。它被設計成上手直覺、操作像喝水呼吸一樣自然——但直覺不代表沒有深度。當店裡忙起來、當有一天你想用得比現在更好，這本手冊就是那個時候該翻開的地方。</p>' +
+        '<p>十三個模組，各自獨立又彼此相連：收銀是每天都要用的第一線，庫存與採購是背後的骨幹，會員與預約是留住客人的方式，人事考勤讓管理不再靠記憶，AI 則在你需要判斷時給一個提醒。</p>' +
+        '<p>我們把每個模組拆成兩件事——怎麼操作、畫面上有什麼——盡量用最少的字說清楚。讀不完沒關係，先讀跟你最相關的那幾章，其餘的，等用得上的時候再回來翻。</p>' +
+        '<p>覺得哪一段對你特別重要，點一下就能畫重點，下次打開手冊時它還在。</p>' +
+        '<p class="sign">—— OBARAI INTELLIGENCE</p>' +
+        '</div>' };
+    }
+    if (i === 2){
+      var rows = MODS.map(function(m, n0){
+        var n = n0 + 1, pg = 3 + n0 + 1;
+        return '<li><a href="#" data-goto="' + (n+2) + '">' +
+          '<span class="toc-num">' + String(n).padStart(2,"0") + '</span>' +
+          '<span class="toc-name">' + m.name + '</span>' +
+          '<span class="toc-sub">' + m.tag + '</span>' +
+          '<span class="toc-dots"></span>' +
+          '<span class="toc-pg">' + pg + '</span></a></li>';
+      }).join("");
+      return { head:"目錄", body: '<p class="lead-eyebrow">目錄</p><h1 class="lead-h">十三個模組</h1><ul class="toc-list">' + rows + '</ul>' };
+    }
+    if (i === TOTAL - 1){
+      return { head:"後記", body:
+        '<div class="closing">' +
+          '<p class="line">這或許是你們看過使用說明最少的系統操作手冊吧。</p>' +
+          '<div class="rule"></div>' +
+          '<p class="line soft">我們認為大部份都可以讓電腦、讓 AI 去執行。</p>' +
+          '<p class="line soft">AI 不能幫你過生活，但希望有了 AI，你可以找回更多失去的生活。</p>' +
+          '<div class="brand">' +
+            '<img src="/logo-mark.png" alt="OBARAI INTELLIGENCE">' +
+            '<img src="/line-mark.png" alt="LINE 官方帳號">' +
+          '</div>' +
+          '<div class="co">OBARAI INTELLIGENCE Co., Ltd. 鎧洋聲影科技　·　統一編號 61210989　·　電話 03-6129005</div>' +
+        '</div>' };
+    }
+    var n = i - 2;
+    var m = MODS[n-1];
+    return { head: "第" + String(n).padStart(2,"0") + "章 · " + m.name, body: renderModule(m, n) };
+  }
+
+  var leaf = document.getElementById("leaf");
+
+  function applyHlListeners(root){
+    root.querySelectorAll(".hl-t").forEach(function(el){
+      el.addEventListener("click", function(){
+        var id = el.getAttribute("data-hid");
+        if (!id) return;
+        if (hlSet.has(id)){ hlSet.delete(id); el.classList.remove("hl"); }
+        else { hlSet.add(id); el.classList.add("hl"); }
+        saveHl(hlSet);
+      });
+    });
+    root.querySelectorAll("[data-goto]").forEach(function(el){
+      el.addEventListener("click", function(e){ e.preventDefault(); go(parseInt(el.getAttribute("data-goto"),10)); });
+    });
+    var openBtn = root.querySelector("#openBtn");
+    if (openBtn) openBtn.addEventListener("click", function(){ go(1); });
+  }
+
+  function paint(i){
+    var p = renderPage(i);
+    leaf.innerHTML =
+      (i > 0 ? '<div class="running-head"><span>ORBIT 操作與介面手冊</span><b>' + p.head + '</b></div>' : '') +
+      '<div class="page-scroll">' + p.body + '</div>' +
+      (i > 0 ? '<div class="page-foot"><span>' + (i+1) + ' / ' + TOTAL + '</span><span class="rail" style="--pct:' + Math.round((i)/(TOTAL-1)*100) + '%"><i></i></span></div>' : '');
+    applyHlListeners(leaf);
+    if (i >= 3 && !localStorage.getItem(hintKey)){
+      try{ localStorage.setItem(hintKey, "1"); }catch(e){}
+    }
+    try{ localStorage.setItem(posKey, String(i)); }catch(e){}
+  }
+
+  function go(target, dir){
+    target = Math.max(0, Math.min(TOTAL-1, target));
+    if (target === idx) return;
+    var direction = dir || (target > idx ? "next" : "prev");
+    leaf.classList.remove("settled");
+    leaf.classList.add(direction === "next" ? "turn-next-out" : "turn-prev-out");
+    window.setTimeout(function(){
+      idx = target;
+      paint(idx);
+      leaf.classList.remove("turn-next-out","turn-prev-out");
+      leaf.classList.add(direction === "next" ? "enter-from-next" : "enter-from-prev");
+      // force reflow so the entering transform is applied before we animate to settled
+      void leaf.offsetWidth;
+      requestAnimationFrame(function(){
+        leaf.classList.remove("enter-from-next","enter-from-prev");
+        leaf.classList.add("settled");
+      });
+    }, 260);
+  }
+
+  function next(){ go(idx+1, "next"); }
+  function prev(){ go(idx-1, "prev"); }
+
+  document.getElementById("tapNext").addEventListener("click", next);
+  document.getElementById("tapPrev").addEventListener("click", prev);
+  document.getElementById("btnNext").addEventListener("click", next);
+  document.getElementById("btnPrev").addEventListener("click", prev);
+  document.getElementById("btnToc").addEventListener("click", function(){ go(2); });
+  document.getElementById("btnCover").addEventListener("click", function(){ go(0); });
+
+  document.addEventListener("keydown", function(e){
+    if (e.key === "ArrowRight") next();
+    else if (e.key === "ArrowLeft") prev();
+  });
+
+  var touchX = null, touchY = null;
+  document.addEventListener("touchstart", function(e){
+    touchX = e.touches[0].clientX; touchY = e.touches[0].clientY;
+  }, {passive:true});
+  document.addEventListener("touchend", function(e){
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    var dy = e.changedTouches[0].clientY - touchY;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)){
+      if (dx < 0) next(); else prev();
+    }
+    touchX = null; touchY = null;
+  }, {passive:true});
+
+  var resume = 0;
+  try{ resume = parseInt(localStorage.getItem(posKey)||"0",10) || 0; }catch(e){}
+  idx = Math.max(0, Math.min(TOTAL-1, resume));
+  paint(idx);
+})();
+</script>
 </body>
 </html>
