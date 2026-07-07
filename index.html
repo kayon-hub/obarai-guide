@@ -216,9 +216,13 @@
   .closing .line{ font-family:var(--serif); font-size:clamp(17px,2.6vw,21px); color:var(--ink); line-height:1.8; max-width:46ch; text-wrap:balance; }
   .closing .line.soft{ color:var(--ink-soft); font-size:clamp(14px,2vw,16px); }
   .closing .rule{ width:36px; height:1px; background:var(--gold-16); margin:6px 0; }
-  .closing .brand{ margin-top:22px; display:flex; align-items:center; gap:18px; }
-  .closing .brand img{ height:34px; width:auto; opacity:.92; }
-  .closing .co{ margin-top:16px; font-family:var(--sans); font-size:11px; color:var(--ink-faint); line-height:1.9; }
+  .closing .brand{ margin-top:26px; display:flex; align-items:flex-end; gap:34px; flex-wrap:wrap; justify-content:center; }
+  .closing .brand-item{ display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .closing .brand-item img{ display:block; }
+  .closing .brand-item.co-mark img{ height:30px; width:auto; opacity:.95; }
+  .closing .brand-item.line-mark img{ height:130px; width:auto; border-radius:12px; box-shadow:0 6px 20px var(--shadow); }
+  .closing .brand-item span{ font-family:var(--sans); font-size:10.5px; letter-spacing:.06em; color:var(--ink-faint); }
+  .closing .co{ margin-top:18px; font-family:var(--sans); font-size:11px; color:var(--ink-faint); line-height:1.9; }
 </style>
 </head>
 <body>
@@ -429,8 +433,8 @@
           '<p class="line soft">我們認為大部份都可以讓電腦、讓 AI 去執行。</p>' +
           '<p class="line soft">AI 不能幫你過生活，但希望有了 AI，你可以找回更多失去的生活。</p>' +
           '<div class="brand">' +
-            '<img src="/logo-mark.png" alt="OBARAI INTELLIGENCE">' +
-            '<img src="/line-mark.png" alt="LINE 官方帳號">' +
+            '<div class="brand-item co-mark"><img src="/logo-mark.png" alt="OBARAI INTELLIGENCE"></div>' +
+            '<div class="brand-item line-mark"><img src="/line-qr.png" alt="掃碼加入 OBARAI LINE 官方帳號"><span>掃碼加入 LINE 官方帳號</span></div>' +
           '</div>' +
           '<div class="co">OBARAI INTELLIGENCE Co., Ltd. 鎧洋聲影科技　·　統一編號 61210989　·　電話 03-6129005</div>' +
         '</div>' };
